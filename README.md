@@ -36,17 +36,20 @@ Azure DevOps will automatically hook up the repo to the pipeline (after authenti
 Next Azure will ask to configure the pipeline. Select the 'Starter Pipeline', it will create a basic YML file.
 Save and run the pipeline.
 
-The YML file should be part of your code base, so be sure to fetch and pull.
+The YML file should be part of your code base and will be pushed into Git, so be sure to fetch and pull.
+In order to modify the YML file, you could do that in Azure DevOps or locally in VS Code.
+The most easy way is to use Azure DevOps. You can drag and drap predefined tasks into the YML file.
 
 ### 5.1. trigger, pool and vars
 
-First part of the YML file, is the setup. 
+First part of the YML file, is the setup. The default template had one trigger and that is main. We want to have both main and develop as triggers in order
+to start the build pipeline. The pool we will not modify. Next we have some variables, one for build configuration and one for angular's build configuration.
 
 trigger:
   branches:
     include:
       - develop
-      - master
+      - main
 
 pool:
   vmImage: 'ubuntu-latest'
