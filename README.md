@@ -13,13 +13,16 @@ Based on https://www.olivercoding.com/2020-01-02-angular-azure-devops/
 
 ## 3. Project setup
 For this example, we will use a blank angular project. I have used this guide on more professional angular projects also. 
-But in this case, lets just setup a new angular 11 project:
-
 First I have created a new github repository and did a clone locally.
-If you have no angular cli installed on your system; https://angular.io/guide/setup-local
+But in this case, lets just setup a new angular 11 project:
 
 'ng new cfg-ng' and after lets go into the project dir and run 'ng serve', 'ng test' and 'ng lint', just to see if everything works.
 
+## 4. Additional packages
+We need some extra packages in order to make things work, lets install them:
+- npm install puppeteer --save-dev
+- npm install karma-junit-reporter --save-dev
+- npm install jasmine-reporters --save-dev
 
 
 
