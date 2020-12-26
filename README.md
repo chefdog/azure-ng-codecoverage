@@ -20,9 +20,11 @@ But in this case, lets just setup a new angular 11 project:
 
 ## 4. Additional packages
 We need some extra packages in order to make things work, lets install them:
-`npm install puppeteer --save-dev`
-`npm install karma-junit-reporter --save-dev`
-`npm install jasmine-reporters --save-dev`
+```
+npm install puppeteer --save-dev
+npm install karma-junit-reporter --save-dev
+npm install jasmine-reporters --save-dev
+```
 
 
 ## 5. Azure DevOps Project and YML
