@@ -46,6 +46,7 @@ The most easy way is to use Azure DevOps. You can drag and drap predefined tasks
 
 First part of the YML file, is the setup. The default template had one trigger and that is main. We want to have both main and develop as triggers in order
 to start the build pipeline. The pool we will not modify. Next we have some variables, one for build configuration and one for angular's build configuration.
+
 ```
 trigger:
   branches:
@@ -62,14 +63,16 @@ variables:
 ```
 
 ### 5.2 Steps and tasks
-
+First, remove the 2 example script tasks. Basically all code after steps.
+Next create a new task, based on the NPM task template.
+```
 steps:
 - task: Npm@1
   displayName: 'npm install'
   inputs:
     command: 'install'
     workingDir: 'src/CustoMassWeb'
-
+```
 - task: Npm@1
   inputs:
     command: 'custom'
