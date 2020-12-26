@@ -25,15 +25,22 @@ We need some extra packages in order to make things work, lets install them:
 `npm install jasmine-reporters --save-dev`
 
 
-## 5. YML 
+## 5. Azure DevOps Project and YML
 
 If you log into Azure, create a new project. Make sure the Version Control of the project is GIT (under advanced).
 Most of the time, I select the scrum option for work item proces.
 
+Next we need to create a pipeline (a build pipeline that is). Click on create pipeline and select Github if your code is located at Github.
+Azure DevOps will automatically hook up the repo to the pipeline (after authentication and authorization).
+
+Next Azure will ask to configure the pipeline. Select the 'Starter Pipeline', it will create a basic YML file.
+Save and run the pipeline.
+
+The YML file should be part of your code base, so be sure to fetch and pull.
 
 ### 5.1. trigger, pool and vars
 
-First part of the YML file, is the setup
+First part of the YML file, is the setup. 
 
 trigger:
   branches:
@@ -47,6 +54,8 @@ pool:
 variables:
   buildConfiguration: 'Release'
   ngBuildConfiguration: '--prod'
+
+### 5.2 Steps and tasks
 
 steps:
 - task: Npm@1
