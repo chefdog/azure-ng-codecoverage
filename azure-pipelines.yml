@@ -4,10 +4,17 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
+  branches:
+    include:
+      - develop
+      - main
 
 pool:
   vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  ngBuildConfiguration: '--prod'
 
 steps:
 - script: echo Hello, world!
