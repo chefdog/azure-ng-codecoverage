@@ -12,7 +12,7 @@ Based on https://www.olivercoding.com/2020-01-02-angular-azure-devops/
 - Visual Studio Code
 
 ## 3. Project setup
-For this example, we will use a blank angular project. I have used this guide on more professional angular projects also. 
+For this example, we will use a blank angular project. 
 First I have created a new github repository and did a clone locally.
 But in this case, lets just setup a new angular 11 project:
 
@@ -27,23 +27,26 @@ We need some extra packages in order to make things work, lets install them:
 
 ## 5. YML 
 
+If you log into Azure, create a new project. Make sure the Version Control of the project is GIT (under advanced).
+Most of the time, I select the scrum option for work item proces.
+
 
 ### 5.1. trigger, pool and vars
 
 First part of the YML file, is the setup
 
-`trigger:`
-  `branches:`
-    `include:`
-      `- develop`
-      `- master`
+trigger:
+  branches:
+    include:
+      - develop
+      - master
 
-`pool:`
-  `vmImage: 'ubuntu-latest'`
+pool:
+  vmImage: 'ubuntu-latest'
 
-`variables:`
-  `buildConfiguration: 'Release'`
-  `ngBuildConfiguration: '--prod'`
+variables:
+  buildConfiguration: 'Release'
+  ngBuildConfiguration: '--prod'
 
 steps:
 - task: Npm@1
