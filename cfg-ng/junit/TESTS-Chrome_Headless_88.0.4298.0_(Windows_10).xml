@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<testsuite name="Chrome Headless 88.0.4298.0 (Windows 10)" package="" timestamp="2020-12-27T15:13:59" id="0" hostname="CFG-ALEX" tests="3" errors="0" failures="0" time="0.123">
+<testsuite name="Chrome Headless 88.0.4298.0 (Windows 10)" package="" timestamp="2020-12-27T16:04:33" id="0" hostname="CFG-ALEX" tests="3" errors="0" failures="0" time="0.122">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/88.0.4298.0 Safari/537.36"/>
   </properties>
-  <testcase name="AppComponent should create the app" time="0.096" classname="Chrome_Headless_88_0_4298_0_(Windows_10).AppComponent"/>
-  <testcase name="AppComponent should render title" time="0.017" classname="Chrome_Headless_88_0_4298_0_(Windows_10).AppComponent"/>
-  <testcase name="AppComponent should have as title 'cfg-ng'" time="0.01" classname="Chrome_Headless_88_0_4298_0_(Windows_10).AppComponent"/>
+  <testcase name="AppComponent should render title" time="0.101" classname="Chrome_Headless_88_0_4298_0_(Windows_10).AppComponent"/>
+  <testcase name="AppComponent should create the app" time="0.012" classname="Chrome_Headless_88_0_4298_0_(Windows_10).AppComponent"/>
+  <testcase name="AppComponent should have as title 'cfg-ng'" time="0.009" classname="Chrome_Headless_88_0_4298_0_(Windows_10).AppComponent"/>
   <system-out>
     <![CDATA[
 ]]>
