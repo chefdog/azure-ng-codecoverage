@@ -36,3 +36,9 @@ steps:
   inputs:
     PathtoPublish: '$(ngWorkingDir)/dist'
     ArtifactName: 'angularBuildArtifactProd'
+
+- task: DeleteFiles@1
+  displayName: 'Delete JUnit files'
+  inputs:
+    SourceFolder: '$(ngWorkingDir)/junit'
+    Contents: 'TESTS*.xml'

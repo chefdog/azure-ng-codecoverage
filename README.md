@@ -182,12 +182,18 @@ module.exports = function (config) {
 ```
 
 #### 5.3.2
+Lets continue with the pipeline, we need to have a cleanup task first.
+Create a new task 'Delete files' or just search in azure and add the task.
+Modify the source folder and contents:
 
+```
 - task: DeleteFiles@1
   displayName: 'Delete JUnit files'
   inputs:
-    SourceFolder: 'src/CustoMassWeb/junit'
+    SourceFolder: 'cfg-ng/junit'
     Contents: 'TESTS*.xml'
+```
+
 - task: Npm@1
   displayName: 'Test angular'
   inputs:
