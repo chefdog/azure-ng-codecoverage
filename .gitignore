@@ -43,6 +43,10 @@ Generated\ Files/
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 
+# JUnit
+/cfg-ng/junit
+/cfg-ng/junit/*.xml
+
 # NUnit
 *.VisualState.xml
 TestResult.xml
@@ -348,3 +352,4 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+

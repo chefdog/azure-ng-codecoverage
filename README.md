@@ -232,6 +232,7 @@ The last 2 tasks are there to publish the results. Again 2 publish tasks:
     summaryFileLocation: 'cfg-ng/coverage/cobertura-coverage.xml'
     reportDirectory: 'cfg-ng/coverage'
     failIfCoverageEmpty: false
+
 - task: PublishTestResults@2
   displayName: 'Publish Angular test results'
   condition: succeededOrFailed()
@@ -243,3 +244,10 @@ The last 2 tasks are there to publish the results. Again 2 publish tasks:
     testRunTitle: 'Angular'
 ```
 
+### 6. gitignore
+If you run the headless test locally, I think you should not push them into git, so add something like this:
+```
+# JUnit
+/cfg-ng/junit
+/cfg-ng/junit/*.xml
+```
