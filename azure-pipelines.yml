@@ -16,7 +16,7 @@ variables:
 
 steps:
 - task: Npm@1
-  displayName: 'npm install'
+  displayName: 'Npm install'
   inputs:
     command: 'install'
     workingDir: '$(ngWorkingDir)'
@@ -42,3 +42,10 @@ steps:
   inputs:
     SourceFolder: '$(ngWorkingDir)/junit'
     Contents: 'TESTS*.xml'
+
+- task: Npm@1
+  displayName: 'Test angular'
+  inputs:
+    command: 'custom'
+    workingDir: '$(ngWorkingDir)'
+    customCommand: 'run test-headless'

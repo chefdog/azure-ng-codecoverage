@@ -181,10 +181,28 @@ module.exports = function (config) {
 };
 ```
 
+Also, modify the package.json scripts section:
+```
+"scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "install-puppeteer": "cd node_modules/puppeteer && npm run install",
+    "test-puppeteer": "npm run install-puppeteer && ng test",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+```
+
+
+
 #### 5.3.2
 Lets continue with the pipeline, we need to have a cleanup task first.
 Create a new task 'Delete files' or just search in azure and add the task.
-Modify the source folder and contents:
+Modify the source folder and contents.
+
+And add the actual test task.
 
 ```
 - task: DeleteFiles@1
@@ -192,14 +210,16 @@ Modify the source folder and contents:
   inputs:
     SourceFolder: 'cfg-ng/junit'
     Contents: 'TESTS*.xml'
-```
 
 - task: Npm@1
   displayName: 'Test angular'
   inputs:
     command: 'custom'
-    workingDir: 'src/CustoMassWeb'
-    customCommand: 'run test -- --watch=false --code-coverage'
+    workingDir: 'cfg-ng'
+    customCommand: 'run test-puppeteer -- --watch=false --code-coverage'
+
+```
+
 - task: PublishCodeCoverageResults@1
   displayName: 'Publish code coverage Angular'
   condition: succeededOrFailed()
