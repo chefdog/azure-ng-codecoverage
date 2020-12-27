@@ -12,7 +12,6 @@ pool:
 variables:
   buildConfiguration: 'Release'
   ngBuildConfiguration: '--prod'
-  ngWorkingDir: 'cfg-ng'
 
 steps:
 - task: Npm@1
