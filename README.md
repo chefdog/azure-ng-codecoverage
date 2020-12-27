@@ -188,7 +188,7 @@ Also, modify the package.json scripts section:
     "start": "ng serve",
     "build": "ng build",
     "install-puppeteer": "cd node_modules/puppeteer && npm run install",
-    "test-puppeteer": "npm run install-puppeteer && ng test",
+    "test-headless": "npm run install-puppeteer && ng test --watch=false --browsers=ChromeHeadless",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -202,7 +202,8 @@ Lets continue with the pipeline, we need to have a cleanup task first.
 Create a new task 'Delete files' or just search in azure and add the task.
 Modify the source folder and contents.
 
-And add the actual test task.
+And add the actual test task. The test task is another NPM custom task.
+It hooks up the command located in the package.json
 
 ```
 - task: DeleteFiles@1
@@ -216,7 +217,7 @@ And add the actual test task.
   inputs:
     command: 'custom'
     workingDir: 'cfg-ng'
-    customCommand: 'run test-puppeteer -- --watch=false --code-coverage'
+    customCommand: 'run test-headless'
 
 ```
 
