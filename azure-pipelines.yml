@@ -55,7 +55,7 @@ steps:
   condition: succeededOrFailed()
   inputs:
     codeCoverageTool: 'Cobertura'
-    summaryFileLocation: '$(ngWorkingDir)/coverage/$(ngWorkingDir)/cobertura-coverage.xml'
+    summaryFileLocation: '$(ngWorkingDir)/coverage/cobertura-coverage.xml'
     reportDirectory: '$(ngWorkingDir)/coverage'
     failIfCoverageEmpty: false
 
