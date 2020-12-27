@@ -1,8 +1,10 @@
 # azure-ng-codecoverage
 How to on integration of ng test. ng lint in azure devops 2020
 
-## 1. Credits 
+## 1. Introduction & Credits 
 Based on https://www.olivercoding.com/2020-01-02-angular-azure-devops/
+
+SO why this tutorial? As on oliver's website there are a couple of howto's already.
 
 ## 2. Requirements
 - github account
