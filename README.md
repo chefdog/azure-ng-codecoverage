@@ -188,7 +188,7 @@ Also, modify the package.json scripts section:
     "start": "ng serve",
     "build": "ng build",
     "install-puppeteer": "cd node_modules/puppeteer && npm run install",
-    "test-headless": "npm run install-puppeteer && ng test --watch=false --browsers=ChromeHeadless",
+    "test-headless": "npm run install-puppeteer && ng test --watch=false --code-coverage --browsers=ChromeHeadless",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
