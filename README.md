@@ -97,11 +97,11 @@ Just type publish in the search field and drag n drop 'Publish Pipeline Artifact
 - task: PublishPipelineArtifact@0
   inputs:
     artifactName: angularPipelineArtifactProd
-    targetPath: 'src/CustoMassWeb/dist'
+    targetPath: '$(ngWorkingDir)/dist'
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: 'src/CustoMassWeb/dist'
+    PathtoPublish: '$(ngWorkingDir)/dist'
     ArtifactName: 'angularBuildArtifactProd'
 ```
 
@@ -213,14 +213,14 @@ It hooks up the command located in the package.json
 - task: DeleteFiles@1
   displayName: 'Delete JUnit files'
   inputs:
-    SourceFolder: 'cfg-ng/junit'
+    SourceFolder: '$(ngWorkingDir)/junit'
     Contents: 'TESTS*.xml'
 
 - task: Npm@1
   displayName: 'Test angular'
   inputs:
     command: 'custom'
-    workingDir: 'cfg-ng'
+    workingDir: '$(ngWorkingDir)'
     customCommand: 'run test-headless'
 
 ```
@@ -233,15 +233,15 @@ The last 2 tasks are there to publish the results. Again 2 publish tasks:
   condition: succeededOrFailed()
   inputs:
     codeCoverageTool: 'Cobertura'
-    summaryFileLocation: 'cfg-ng/coverage/cobertura-coverage.xml'
-    reportDirectory: 'cfg-ng/coverage'
+    summaryFileLocation: '$(ngWorkingDir)/coverage/cobertura-coverage.xml'
+    reportDirectory: '$(ngWorkingDir)/coverage'
     failIfCoverageEmpty: false
 
 - task: PublishTestResults@2
   displayName: 'Publish Angular test results'
   condition: succeededOrFailed()
   inputs:
-    searchFolder: $(System.DefaultWorkingDirectory)/cfg-ng/junit
+    searchFolder: $(System.DefaultWorkingDirectory)/$(ngWorkingDir)/junit
     testResultsFormat: 'JUnit'
     testResultsFiles: '**/TEST-*.xml'
     failTaskOnFailedTests: false
