@@ -18,7 +18,7 @@ settings in the YML file and Karma config. And I saw the need in having both Chr
 ## 3. Project setup
 For this example, we will use a blank angular project. 
 First I have created a new github repository and did a clone locally.
-But in this case, lets just setup a new angular 11 project:
+Lets just setup a new angular 11 project:
 
 `ng new cfg-ng` and after lets go into the project dir and run `ng serve`, `ng test` and `ng lint`, just to see if everything works.
 
