@@ -101,6 +101,87 @@ Just type publish in the search field and drag n drop 'Publish Pipeline Artifact
     ArtifactName: 'angularBuildArtifactProd'
 ```
 
+### 5.3 Test, Code coverage steps and tasks 
+
+#### 5.3.1
+Before we create the next section of the pipeline, we need to change the karma.conf.js first.
+In the orignal article 'ng test' runs chrome headless. I wanted to leave the default 'ng test' working and have an extra option
+to run the headless version. We need the headless version to hook up the proces in Azure. But locally you may want to use the normal 'ng test',
+to debug your test code.
+
+There are 7 modifications needed in the karma.conf.js file:
+1. add puppeteer
+2. add karma reporter
+3. add covertura reporter
+4. add junit reporter
+5. add junitreporter with output dir
+6. add Chromeheadless
+7. add custom launchers
+
+So this should be the result:
+
+```
+module.exports = function (config) {
+  // 1. add puppeteer
+  const puppeteer = require('puppeteer');
+  process.env.CHROME_BIN = puppeteer.executablePath();
+
+  config.set({
+    basePath: '',
+    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    plugins: [
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('karma-jasmine-html-reporter'),
+      require('karma-coverage'),
+      require('@angular-devkit/build-angular/plugins/karma'),
+      require('karma-junit-reporter') // 2. add karma reporter
+    ],
+    client: {
+      jasmine: {
+      },
+      clearContext: false // leave Jasmine Spec Runner output visible in browser
+    },
+    jasmineHtmlReporter: {
+      suppressAll: true // removes the duplicated traces
+    },
+    coverageReporter: {
+      dir: require('path').join(__dirname, './coverage/cfg-ng'),
+      subdir: '.',
+      reporters: [
+        { type: 'html' },
+        { type: 'text-summary' },
+        { type: 'cobertura'} // 3. add covertura reporter
+      ]
+    },
+    reporters: ['progress', 'kjhtml', 'junit'], // 4. add junit reporter
+    junitReporter: {
+      outputDir: '../junit' // 5. add junitreporter with output dir
+    }, 
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['Chrome', 'ChromeHeadless'], // 6. add Chromeheadless
+    // 7. add custom launchers
+    customLaunchers:{
+      ChromeHeadless: {
+        base: 'Chrome',
+        flags: [
+          '--no-sandbox',
+          '--headless',
+          '--disable-gpu',
+          '--remote-debugging-port=9222'
+        ]
+      }
+    },
+    singleRun: false,
+    restartOnFileChange: true
+  });
+};
+```
+
+#### 5.3.2
 
 - task: DeleteFiles@1
   displayName: 'Delete JUnit files'
