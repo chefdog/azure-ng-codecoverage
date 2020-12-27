@@ -12,10 +12,17 @@ pool:
 variables:
   buildConfiguration: 'Release'
   ngBuildConfiguration: '--prod'
+  ngWorkingDir: 'cfg-ng'
 
 steps:
 - task: Npm@1
   displayName: 'npm install'
   inputs:
     command: 'install'
-    workingDir: 'cfg-ng'
+    workingDir: '$(ngWorkingDir)'
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: '$(ngWorkingDir)'
+    customCommand: 'run build -- $(ngBuildConfiguration)'

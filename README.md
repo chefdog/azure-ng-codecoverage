@@ -60,24 +60,30 @@ pool:
 variables:
   buildConfiguration: 'Release'
   ngBuildConfiguration: '--prod'
+  ngWorkingDir: 'cfg-ng'
 ```
 
 ### 5.2 Steps and tasks
 First, remove the 2 example script tasks. Basically all code after steps.
-Next create a new task, based on the NPM task template.
+Next create a new task, based on the NPM task template. It is just the default npm install task.
+The only change we need is the workingDir.
 ```
 steps:
 - task: Npm@1
   displayName: 'npm install'
   inputs:
     command: 'install'
-    workingDir: 'src/CustoMassWeb'
+    workingDir: '$(ngWorkingDir)'
+```
+
+In order to build the angular project we add another npm task, but this time it is a custom task.
 ```
 - task: Npm@1
   inputs:
     command: 'custom'
-    workingDir: 'src/CustoMassWeb'
+    workingDir: '$(ngWorkingDir)'
     customCommand: 'run build -- $(ngBuildConfiguration)'
+```
 
 - task: PublishPipelineArtifact@0
   inputs:
