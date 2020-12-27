@@ -44,8 +44,8 @@ Generated\ Files/
 [Bb]uild[Ll]og.*
 
 # JUnit
-# /cfg-ng/junit
-# /cfg-ng/junit/*.xml
+/cfg-ng/junit
+/cfg-ng/junit/*.xml
 
 # NUnit
 *.VisualState.xml
