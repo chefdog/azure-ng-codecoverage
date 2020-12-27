@@ -4,8 +4,8 @@ How to on integration of ng test. ng lint in azure devops 2020
 ## 1. Introduction & Credits 
 Based on https://www.olivercoding.com/2020-01-02-angular-azure-devops/
 
-So why this tutorial? As on oliver's website there are a couple of howto's already.
-While following oliver's tutorial, some of the stuff was not working for me, so by searching several sources I have added additional
+So why this tutorial? As on Daniel Oliver's website there are a couple of howto's already.
+While following his tutorial, some of the stuff was not working for me, so by searching several sources I have added additional
 settings in the YML file and Karma config. And I saw the need in having both Chrome and Chromeheadless working.
 
 ## 2. Requirements
