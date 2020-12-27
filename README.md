@@ -77,6 +77,7 @@ steps:
 ```
 
 In order to build the angular project we add another npm task, but this time it is a custom task.
+It basically executes the build command located in the package.json file with the additional param `--prod`
 ```
 - task: Npm@1
   inputs:
@@ -85,6 +86,10 @@ In order to build the angular project we add another npm task, but this time it 
     customCommand: 'run build -- $(ngBuildConfiguration)'
 ```
 
+After building the angular source code, we want to publish the result. We need 2 tasks for this.
+Just type publish in the search field and drag n drop 'Publish Pipeline Artifacts' and 'Publish Build Artifactd' onto the YML.
+
+```
 - task: PublishPipelineArtifact@0
   inputs:
     artifactName: angularPipelineArtifactProd
@@ -94,6 +99,8 @@ In order to build the angular project we add another npm task, but this time it 
   inputs:
     PathtoPublish: 'src/CustoMassWeb/dist'
     ArtifactName: 'angularBuildArtifactProd'
+```
+
 
 - task: DeleteFiles@1
   displayName: 'Delete JUnit files'

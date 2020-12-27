@@ -26,3 +26,13 @@ steps:
     command: 'custom'
     workingDir: '$(ngWorkingDir)'
     customCommand: 'run build -- $(ngBuildConfiguration)'
+
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: angularPipelineArtifactProd
+    targetPath: '$(ngWorkingDir)/dist'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(ngWorkingDir)/dist'
+    ArtifactName: 'angularBuildArtifactProd'
