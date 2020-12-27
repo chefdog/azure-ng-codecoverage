@@ -49,3 +49,22 @@ steps:
     command: 'custom'
     workingDir: '$(ngWorkingDir)'
     customCommand: 'run test-headless'
+
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish code coverage Angular'
+  condition: succeededOrFailed()
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(ngWorkingDir)/coverage/cobertura-coverage.xml'
+    reportDirectory: '$(ngWorkingDir)/coverage'
+    failIfCoverageEmpty: false
+
+- task: PublishTestResults@2
+  displayName: 'Publish Angular test results'
+  condition: succeededOrFailed()
+  inputs:
+    searchFolder: $(System.DefaultWorkingDirectory)/$(ngWorkingDir)/junit
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/TEST-*.xml'
+    failTaskOnFailedTests: false
+    testRunTitle: 'Angular'

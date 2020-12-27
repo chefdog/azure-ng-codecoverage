@@ -221,22 +221,25 @@ It hooks up the command located in the package.json
 
 ```
 
+The last 2 tasks are there to publish the results. Again 2 publish tasks:
+
+```
 - task: PublishCodeCoverageResults@1
   displayName: 'Publish code coverage Angular'
   condition: succeededOrFailed()
   inputs:
     codeCoverageTool: 'Cobertura'
-    summaryFileLocation: 'src/CustoMassWeb/coverage/cobertura-coverage.xml'
-    reportDirectory: 'src/CustoMassWeb/coverage'
+    summaryFileLocation: 'cfg-ng/coverage/cobertura-coverage.xml'
+    reportDirectory: 'cfg-ng/coverage'
     failIfCoverageEmpty: false
 - task: PublishTestResults@2
   displayName: 'Publish Angular test results'
   condition: succeededOrFailed()
   inputs:
-    searchFolder: $(System.DefaultWorkingDirectory)/src/CustoMassWeb/junit
+    searchFolder: $(System.DefaultWorkingDirectory)/cfg-ng/junit
     testResultsFormat: 'JUnit'
     testResultsFiles: '**/TEST-*.xml'
     failTaskOnFailedTests: false
     testRunTitle: 'Angular'
-
+```
 
